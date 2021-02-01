@@ -8,4 +8,3 @@ if proceeds > costs:
     print(f"Прибыль в расчете на одного сотрудника составляет {(proceeds - costs) / employers} у.е.")
 else:
     print("Ваша компания убыточна, сократите издержки!")
-

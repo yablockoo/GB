@@ -7,4 +7,3 @@ print(f'Плотность веществ:   Азот = {n2}   Амиак = {nh3
 height = int(input("Введите ваш рост: "))
 name = input("Введите ваше имя: ")
 print(f'{name}, ваш рост: {height}')
-
