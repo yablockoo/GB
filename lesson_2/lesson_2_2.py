@@ -8,4 +8,4 @@ for i in range(0, len_list, 2):
     castling_list[i] = castling_list[i + 1]
     castling_list[i + 1] = var
 
-print(f"Вашщ список перекручен вот так: {castling_list}")
+print(f"Ваш список перекручен вот так: {castling_list}")
