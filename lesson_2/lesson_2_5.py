@@ -3,7 +3,7 @@ score_list = []
 while True:
     new_score = int(input("Введите новое число: "))
     # Вставка числа в случае пустотого списка
-    if len(score_list) == 0:
+    if not score_list:
         score_list.append(new_score)
         print(score_list)
         continue
