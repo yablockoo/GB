@@ -1,25 +1,26 @@
-"""summary = 0
+summary = 0
 continuation = True
 
 
 def sum_function(sum_list):
+    loc_sum = 0
     for i in range(len(sum_list)):
         if sum_list[i] != '*':
             sum_list[i] = float(sum_list[i])
-            global summary
-            summary += sum_list[i]
+            loc_sum += sum_list[i]
         else:
             global continuation
             continuation = False
-    print(f"Сумма чисел = {summary}")
+    return loc_sum
 
 
 while continuation:
     tmp_list = input("Для остановки программы введите '*'. Введите числа через пробел: ").split()
-    sum_function(tmp_list)
+    summary += sum_function(tmp_list)
+    print(f"Сумма чисел = {summary}")
+
+
 """
-
-
 def summary_func():
     summary = 0
     continuation = True
@@ -36,3 +37,4 @@ def summary_func():
 
 
 summary_func()
+"""
