@@ -1,4 +1,8 @@
 def my_func(x, y):
+    """ Первый способ
+    return x ** y
+    """
+    # Второй способ
     for i in range(1, abs(y)):
         x *= x
     return 1 / x
