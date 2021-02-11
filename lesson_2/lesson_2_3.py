@@ -8,6 +8,6 @@ seasons = {"Зима": winter, "Весна": spring, "Лето": summer, "Осе
 for key, value in seasons.items():
     if month in value:
         print(f"Месяц №{month} это {key}")
-    else:
-        print("Неправильно введен месяц!")
         break
+    else:
+        continue
