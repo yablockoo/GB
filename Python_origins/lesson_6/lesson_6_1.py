@@ -11,8 +11,8 @@ class TrafficLight:
         color_iteration = cycle(TrafficLight.color_set.items())
         while count / 3 != repeats:
             light_phase = next(color_iteration)
-            __color__ = (light_phase[0])
-            print(__color__)
+            self.__color__ = (light_phase[0])
+            print(self.__color__)
             sleep(light_phase[1])
             count += 1
 
