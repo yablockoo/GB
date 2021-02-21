@@ -1,10 +1,10 @@
 class Road:
     def __init__(self, length_, width_):
-        self.__length__ = length_
-        self.__width__ = width_
+        self.__length = length_
+        self.__width = width_
 
     def building(self, mass_, thick_):
-        return self.__length__ * self.__width__ * mass_ * thick_
+        return self.__length * self.__width * mass_ * thick_
 
 
 length = int(input("Введите длинну дороги: "))
