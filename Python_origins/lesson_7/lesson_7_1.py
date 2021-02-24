@@ -3,12 +3,12 @@ class Matrix:
         self.list_of_lists = atr_list_of_lists
 
     def __str__(self):
-        tmp_str = ""
+        matrix_str = ""
         for el in self.list_of_lists:
             for a in el:
-                tmp_str += str(a) + ' '
-            tmp_str += '\n'
-        return tmp_str
+                matrix_str += str(a) + ' '
+            matrix_str += '\n'
+        return matrix_str
 
     def __add__(self, other):
         sum_matrix = []
