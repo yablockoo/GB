@@ -13,37 +13,37 @@ class Clothes(ABC):
 class Coat(Clothes):
     @property
     def size(self):
-        return self.size
+        return self.__size
 
     @size.setter
     def size(self, size):
         if size == "s":
-            self.product_len = 10
+            self.__size = 10
         elif size == "m":
-            self.product_len = 15
+            self.__size = 15
         elif size == "l":
-            self.product_len = 20
+            self.__size = 20
 
     def consumption(self):
-        return self.product_len / 6.5 + 0.5
+        return self.__size / 6.5 + 0.5
 
 
 class Costume(Clothes):
     @property
     def size(self):
-        return self.size
+        return self.__size
 
     @size.setter
     def size(self, size):
         if 150 <= size <= 165:
-            self.product_len = 12
+            self.__size = 12
         elif 166 <= size <= 175:
-            self.product_len = 14
+            self.__size = 14
         elif 176 <= size <= 193:
-            self.product_len = 16
+            self.__size = 16
 
     def consumption(self):
-        return 2 * self.product_len + 0.3
+        return 2 * self.__size + 0.3
 
 
 my_coat = Coat(input("Введите размер пальто (s, m ,l):"))
