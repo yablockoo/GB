@@ -7,7 +7,7 @@ class Cell:
 
     def __sub__(self, other):
         if self.cells - other.cells > 0:
-            return Cell(abs(self.cells - other.cells)).cells
+            return Cell(self.cells - other.cells).cells
         else:
             return "Ошибка, результат вычитания отрицательный."
 
