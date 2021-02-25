@@ -6,8 +6,10 @@ class Cell:
         return Cell(self.cells + other.cells)
 
     def __sub__(self, other):
-        if (self.cells - other.cells) or (other.cells - self.cells) > 0:
-            return Cell(abs(self.cells - other.cells))
+        if self.cells - other.cells > 0:
+            return Cell(abs(self.cells - other.cells)).cells
+        else:
+            return "Ошибка, результат вычитания отрицательный."
 
     def __mul__(self, other):
         return Cell(self.cells * other.cells)
@@ -31,7 +33,7 @@ class Cell:
 cell_1 = Cell(10)
 cell_2 = Cell(5)
 print(f"+: {(cell_1 + cell_2).cells}")
-print(f"-: {(cell_1 - cell_2).cells}")
+print(f"-: {(cell_1 - cell_2)}")
 print(f"*: {(cell_1 * cell_2).cells}")
 print(f"/: {(cell_1 / cell_2).cells}")
 print(f"Ряд:\n{cell_1.make_order(3)}")
