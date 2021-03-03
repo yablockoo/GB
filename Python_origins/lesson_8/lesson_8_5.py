@@ -8,7 +8,11 @@
 
 
 class OfficeEquipment:
-    def __init__(self, weight, coast):
+    store_list = {}
+
+    def __init__(self, model, quantity, weight, coast):
+        self.model = model
+        self.quantity = quantity
         self.weight = weight
         self.coast = coast
 
@@ -17,28 +21,28 @@ class OfficeEquipment:
 
 
 class Printer(OfficeEquipment):
-    def __init__(self, weight, coast, cartridge_name, lists_capacity):
-        super().__init__(weight, coast)
+    def __init__(self, model, quantity, weight, coast, cartridge_name, lists_capacity):
+        super().__init__(model, quantity, weight, coast)
         self.cartridge_name = cartridge_name
         self.lists_capacity = lists_capacity
 
 
 class Scanner(OfficeEquipment):
-    def __init__(self, weight, coast, resolution):
-        super().__init__(weight, coast)
+    def __init__(self, model, quantity, weight, coast, resolution):
+        super().__init__(model, quantity, weight, coast)
         self.resolution = resolution
 
 
 class Projector(OfficeEquipment):
-    def __init__(self, weight, coast, contrast, pic_resolution):
-        super().__init__(weight, coast)
+    def __init__(self, model, quantity,  weight, coast, contrast, pic_resolution):
+        super().__init__(model, quantity, weight, coast)
         self.contrast = contrast
         self.pic_resolution = pic_resolution
 
 
-printer = Printer(25, 15000, "f100", 500)
-scanner = Scanner(25, 15000, "4800*4800")
-projector = Projector(25, 15000, "20000:1", "2048*1024")
+printer = Printer("hp", 1, 25, 15000, "f100", 500)
+scanner = Scanner("xerox", 2, 5, 3500, "4800*4800")
+projector = Projector("fuji", 3,  3, 45000, "20000:1", "2048*1024")
 
 printer.show_info("принтер")
 scanner.show_info("сканер")
