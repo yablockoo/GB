@@ -6,6 +6,7 @@
 
 
 class OfficeEquipment:
+    in_store = False
     store_list = {}
 
     def __init__(self, model, weight, coast):
@@ -19,7 +20,7 @@ class OfficeEquipment:
     @staticmethod
     def is_int(var):
         try:
-            var = int(var)
+            int(var)
         except ValueError:
             print("Вы ввели не число!")
             return False
@@ -37,6 +38,7 @@ class Printer(OfficeEquipment):
 
     def to_store(self, quantity):
         if self.is_int(quantity):
+            self.in_store = True
             quantity = int(quantity)
             self.equip_list["модель"] = self.model
             self.equip_list["количество"] = quantity
@@ -72,6 +74,7 @@ class Scanner(OfficeEquipment):
 
     def to_store(self, quantity):
         if self.is_int(quantity):
+            self.in_store = True
             quantity = int(quantity)
             self.equip_list["модель"] = self.model
             self.equip_list["количество"] = quantity
@@ -106,6 +109,7 @@ class Projector(OfficeEquipment):
 
     def to_store(self, quantity):
         if self.is_int(quantity):
+            self.in_store = True
             quantity = int(quantity)
             self.equip_list["модель"] = self.model
             self.equip_list["количество"] = quantity
@@ -139,7 +143,10 @@ printer.to_store(input("Введите количество принтеров �
 scanner.to_store(input("Введите количество сканеров для отправки на склад: "))
 projector.to_store(input("Введите количество проекторов для отправки на склад: "))
 print(f"СКЛАД {OfficeEquipment.store_list}")
-printer.send_to_company(input("Введите количество принтеров для отсылки в компанию: "))
-scanner.send_to_company(input("Введите количество сканеров для отсылки в компанию: "))
-projector.send_to_company(input("Введите количество проекторов для отсылки в компанию: "))
+if printer.in_store:
+    printer.send_to_company(input("Введите количество принтеров для отсылки в компанию: "))
+if scanner.in_store:
+    scanner.send_to_company(input("Введите количество сканеров для отсылки в компанию: "))
+if projector.in_store:
+    projector.send_to_company(input("Введите количество проекторов для отсылки в компанию: "))
 print(f"СКЛАД {OfficeEquipment.store_list}")
