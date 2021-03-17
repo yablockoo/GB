@@ -1,0 +1,38 @@
+alex@alex-VirtualBox:~$ sudo mkdir /home/students
+[sudo] пароль для alex: 
+alex@alex-VirtualBox:~$ sudo mkdir /home/mentors 
+alex@alex-VirtualBox:~$ sudo touch /home/students/students_list.txt
+alex@alex-VirtualBox:~$ sudo touch /home/mentors/mentors_list.txt
+alex@alex-VirtualBox:~$ sudo ls -l /home/students/
+итого 0
+-rw-r--r-- 1 root root 0 мар 14 20:42 students_list.txt
+alex@alex-VirtualBox:~$ sudo ls -l /home/mentors/
+итого 0
+-rw-r--r-- 1 root root 0 мар 14 20:42 mentors_list.txt
+alex@alex-VirtualBox:~$ sudo vim /home/students/students_list.txt
+alex@alex-VirtualBox:~$ sudo vim /home/mentors/mentors_list.txt
+alex@alex-VirtualBox:~$ sudo mv /home/mentors/mentors_list.txt /home/students/mentors_list.txt
+alex@alex-VirtualBox:~$ sudo ls -l /home/mentors/
+итого 0
+alex@alex-VirtualBox:~$ sudo ls -l /home/students/
+итого 8
+-rw-r--r-- 1 root root 184 мар 14 20:59 mentors_list.txt
+-rw-r--r-- 1 root root 861 мар 14 20:54 students_list.txt
+alex@alex-VirtualBox:~$ sudo rm -rf /home/mentors
+alex@alex-VirtualBox:~$ ls -l /home
+итого 8
+drwxr-xr-x 17 alex alex 4096 мар 14 20:17 alex
+drwxr-xr-x  2 root root 4096 мар 14 21:01 students
+alex@alex-VirtualBox:~$ sudo mv /home/students /home/students_and_mentors
+alex@alex-VirtualBox:~$ ls -l /home
+итого 8
+drwxr-xr-x 17 alex alex 4096 мар 14 20:17 alex
+drwxr-xr-x  2 root root 4096 мар 14 21:01 students_and_mentors
+alex@alex-VirtualBox:~$ ls -l /home/students_and_mentors
+итого 8
+-rw-r--r-- 1 root root 184 мар 14 20:59 mentors_list.txt
+-rw-r--r-- 1 root root 861 мар 14 20:54 students_list.txt
+alex@alex-VirtualBox:~$ sudo rm -rf /home/students_and_mentors
+alex@alex-VirtualBox:~$ ls -l /home
+итого 4
+drwxr-xr-x 17 alex alex 4096 мар 14 20:17 alex

@@ -1,0 +1,18 @@
+alex@alex-VirtualBox:~$ uname -a
+Linux alex-VirtualBox 5.8.0-44-generic #50~20.04.1-Ubuntu SMP Wed Feb 10 21:07:30 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+alex@alex-VirtualBox:~$ sudo lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.2 LTS
+Release:	20.04
+Codename:	focal
+alex@alex-VirtualBox:~$ hostnamectl
+   Static hostname: alex-VirtualBox
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 78aa050889534e2d875a72f5d3004c5c
+           Boot ID: 4692947add934b7d8fb0591bfeba3b36
+    Virtualization: oracle
+  Operating System: Ubuntu 20.04.2 LTS
+            Kernel: Linux 5.8.0-44-generic
+      Architecture: x86-64

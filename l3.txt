@@ -1,0 +1,132 @@
+ДЗ-2(доп):
+Using username "alex".
+Authenticating with public key "rsa-key-20210314"
+Passphrase for key "rsa-key-20210314":
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.8.0-44-generic x86_64)
+
+
+
+ДЗ-3:
+alex@alex-VirtualBox:~$ sudo adduser temp_user_1
+Добавляется пользователь «temp_user_1» ...
+Добавляется новая группа «temp_user_1» (1001) ...
+Добавляется новый пользователь «temp_user_1» (1001) в группу «temp_user_1» ...
+Создаётся домашний каталог «/home/temp_user_1» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе temp_user_1
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: El Flamingo
+	Номер комнаты []: 404
+	Рабочий телефон []: 88005553535
+	Домашний телефон []: 555-1212
+	Другое []: other
+Данная информация корректна? [Y/n] y
+
+alex@alex-VirtualBox:~$ cd /etc
+alex@alex-VirtualBox:/etc$ less passwd
+alex@alex-VirtualBox:/etc$ tail passwd
+...
+temp_user_1:x:1001:1001:El Flamingo,404,88005553535,555-1212,other:/home/temp_user_1:/bin/bash
+
+alex@alex-VirtualBox:/etc$ cd ~
+alex@alex-VirtualBox:~$ sudo deluser temp_user_1 
+[sudo] пароль для alex: 
+Удаляется пользователь «temp_user_1» ...
+Предупреждение: в группе `temp_user_1' больше никого нет.
+Готово.
+
+alex@alex-VirtualBox:~$ sudo addgroup lonely_temp_user_2
+Добавляется группа «lonely_temp_user_2» (GID 1003) ...
+Готово.
+alex@alex-VirtualBox:~$ sudo addgroup lonely_temp_user_3
+Добавляется группа «lonely_temp_user_3» (GID 1004) ...
+Готово.
+alex@alex-VirtualBox:~$ sudo addgroup happy_temp_users
+Добавляется группа «happy_temp_users» (GID 1005) ...
+Готово.
+
+alex@alex-VirtualBox:~$ sudo usermod -g lonely_temp_user_2 temp_user_2
+alex@alex-VirtualBox:~$ sudo usermod -g lonely_temp_user_3 temp_user_3
+alex@alex-VirtualBox:~$ sudo usermod -aG happy_temp_users temp_user_3
+alex@alex-VirtualBox:~$ sudo usermod -aG happy_temp_users temp_user_2
+alex@alex-VirtualBox:~$ cd /etc
+alex@alex-VirtualBox:/etc$ tail group
+...
+temp_user_2:x:1002:
+temp_user_3:x:1001:
+lonely_temp_user_2:x:1003:
+lonely_temp_user_3:x:1004:
+happy_temp_users:x:1005:temp_user_3,temp_user_2
+
+alex@alex-VirtualBox:/etc$ sudo gpasswd -d temp_user_2 lonely_temp_user_2
+Удаление пользователя temp_user_2 из группы lonely_temp_user_2
+gpasswd: пользователь «temp_user_2» не является членом «lonely_temp_user_2»
+alex@alex-VirtualBox:/etc$ sudo gpasswd -d temp_user_3 lonely_temp_user_3
+Удаление пользователя temp_user_3 из группы lonely_temp_user_3
+gpasswd: пользователь «temp_user_3» не является членом «lonely_temp_user_3»
+
+alex@alex-VirtualBox:/etc$ sudo adduser temp_superuser
+Добавляется пользователь «temp_superuser» ...
+Добавляется новая группа «temp_superuser» (1006) ...
+Добавляется новый пользователь «temp_superuser» (1003) в группу «temp_superuser» ...
+Создаётся домашний каталог «/home/temp_superuser» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе temp_superuser
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: 
+	Номер комнаты []: 
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] y
+alex@alex-VirtualBox:/etc$ sudo usermod -aG sudo temp_superuser
+alex@alex-VirtualBox:/etc$ more group
+...
+sudo:x:27:alex,temp_superuser
+...
+
+В sudoers:
+...
+%apt_get_users ALL=(ALL)NOPASSWD:/usr/bin/apt-get
+...
+
+alex@alex-VirtualBox:/etc$ su temp_apt_get_user
+Пароль: 
+temp_apt_get_user@alex-VirtualBox:/etc$ cd ~
+temp_apt_get_user@alex-VirtualBox:~$ apt-get update
+
+Чтение списков пакетов… Готово
+E: Не удалось открыть файл блокировки /var/lib/apt/lists/lock - open (13: Отказано в доступе)
+E: Невозможно заблокировать каталог /var/lib/apt/lists/
+temp_apt_get_user@alex-VirtualBox:~$ sudo apt-get update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]                
+Пол:4 http://security.ubuntu.com/ubuntu focal-security InRelease [109 kB]         
+Пол:5 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [24,3 kB]
+Пол:6 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [58,2 kB]
+Получено 406 kB за 1с (701 kB/s)              
+Чтение списков пакетов… Готово
+
+temp_apt_get_user@alex-VirtualBox:~$ sudo apt-get upgrade
+
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Расчёт обновлений… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  chromium-codecs-ffmpeg-extra gstreamer1.0-vaapi libgstreamer-plugins-bad1.0-0 libva-wayland2
+  linux-headers-5.8.0-43-generic linux-hwe-5.8-headers-5.8.0-43 linux-image-5.8.0-43-generic
+  linux-modules-5.8.0-43-generic linux-modules-extra-5.8.0-43-generic
+Для их удаления используйте «sudo apt autoremove».
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+
+
+
+
