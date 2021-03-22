@@ -1,0 +1,51 @@
+1)
+alex@alex-VirtualBox:~$ sudo echo -e "\033[35mGeek \033[34mBrains \033[32mLinux \033[33mWork \033[31mStation\033[0m">file1
+[sudo] пароль для alex: 
+alex@alex-VirtualBox:~$ cat file1
+Geek Brains Linux Work Station
+
+alex@alex-VirtualBox:~$ cat /etc/* 2>errors.txt
+# /etc/adduser.conf: `adduser' configuration.
+# See adduser(8) and adduser.conf(5) for full documentation.
+   .....
+
+alex@alex-VirtualBox:~$ more errors.txt
+cat: /etc/acpi: Это каталог
+cat: /etc/alsa: Это каталог
+   .....
+2)
+alex@alex-VirtualBox:~$ ll /etc|cut -b 1-10|sort|uniq
+drwxr-s---
+drwxr-xr-x
+lrwxrwxrwx
+-r--r-----
+-r--r--r--
+-rw-------
+-rw-r-----
+-rw-r--r--
+-rw-rw-r--
+итого
+3)
+alex@alex-VirtualBox:~$ sudo vim /etc/ssh/ssh_config
+[sudo] пароль для alex: 
+alex@alex-VirtualBox:~$ sudo systemctl restart sshd
+alex@alex-VirtualBox:~$ sudo vim /etc/ssh/ssh_config
+alex@alex-VirtualBox:~$ sudo systemctl reload sshd
+
+Рестарт перезапускает службу с остановкой, Релоуд пересчитывает конфигурацию без остановки службы.
+
+alex@alex-VirtualBox:~$ cat > file2
+selling garagealex@alex-VirtualBox:~$ 
+ctrl+D - передает сигнал окончания файла, поток ввода окончен.
+
+4)
+alex@alex-VirtualBox:~$ mc
+alex@alex-VirtualBox:~$ ps -e|grep 'mc'
+   1230 ?        00:00:00 ibus-memconf
+   2808 pts/1    00:00:00 mc
+alex@alex-VirtualBox:~$ kill -9 2808
+alex@alex-VirtualBox:~$ ps -e|grep 'mc'
+   1230 ?        00:00:00 ibus-memconf
+
+
+
