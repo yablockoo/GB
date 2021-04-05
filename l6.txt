@@ -1,0 +1,82 @@
+1)
+alex@alex-VirtualBox:~$ cat > script1.sh
+#!/bin/bash
+echo $USER$USER$USER
+
+alex@alex-VirtualBox:~$ bash script1.sh
+alexalexalex
+
+2)
+alex@alex-VirtualBox:~$ nano even.sh
+
+#!/bin/bash
+for i in {0..100};
+do
+        if [ $(expr $i % 2) = '0' ]; then
+                echo $i
+        fi
+done
+
+alex@alex-VirtualBox:~$ bash even.sh
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+38
+40
+42
+44
+46
+48
+50
+52
+54
+56
+58
+60
+62
+64
+66
+68
+70
+72
+74
+76
+78
+80
+82
+84
+86
+88
+90
+92
+94
+96
+98
+100
+
+3)
+alex@alex-VirtualBox:~$ crontab -e
+no crontab for alex - using an empty one
+crontab: installing new crontab
+alex@alex-VirtualBox:~$ crontab -l
+# Edit this file to introduce tasks to be run by cron.
+# 
+# m h  dom mon dow   command
+*/10 * * * * cp /home/alex/test.txt /home/alex/test.txt.bak
+

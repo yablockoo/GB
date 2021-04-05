@@ -1,0 +1,60 @@
+1)
+alex@alex-VirtualBox:~$ echo file1>Hello World!
+alex@alex-VirtualBox:~$ cp file1 file2
+alex@alex-VirtualBox:~$ ln -s file1 file3
+alex@alex-VirtualBox:~$ ln file1 file4
+alex@alex-VirtualBox:~$ ls -li
+
+422445 -rw-rw-r-- 2 alex alex   60 мар 22 21:40  file1
+422447 -rw-rw-r-- 1 alex alex   60 мар 25 22:20  file2
+422450 lrwxrwxrwx 1 alex alex    5 мар 25 22:20  file3 -> file1
+422445 -rw-rw-r-- 2 alex alex   60 мар 22 21:40  file4
+
+alex@alex-VirtualBox:~$ rm file1
+alex@alex-VirtualBox:~$ more file3
+more: выполение команды stat для file3 завершилось неудачно: Нет такого файла или каталога
+alex@alex-VirtualBox:~$ more file4
+Geek Brains Linux Work Station
+
+2)
+lex@alex-VirtualBox:~$ mv file1 f1
+alex@alex-VirtualBox:~$ mv file2 f2
+alex@alex-VirtualBox:~$ mv file3 f3
+alex@alex-VirtualBox:~$ mv file4 f4
+alex@alex-VirtualBox:~$ ln -s f3 f5
+alex@alex-VirtualBox:~$ mkdir mydir
+alex@alex-VirtualBox:~$ mv f3 mydir/
+alex@alex-VirtualBox:~$ mv f5 mydir/
+alex@alex-VirtualBox:~$ mv f4 mydir/
+
+3)
+alex@alex-VirtualBox:~$ echo >pfile1
+alex@alex-VirtualBox:~$ echo >pfile2
+alex@alex-VirtualBox:~$ sudo chmod 664 pfile1
+alex@alex-VirtualBox:~$ sudo chmod 6 pfile2
+alex@alex-VirtualBox:~$ ls -li
+
+422455 -rw-rw-r-- 1 alex alex    1 мар 25 23:02  pfile1
+422456 -------rw- 1 alex alex    1 мар 25 23:02  pfile2
+
+alex@alex-VirtualBox:~$ sudo adduser sam
+Добавляется пользователь «sam» ...
+Добавляется новая группа «sam» (1008) ...
+Добавляется новый пользователь «sam» (1001) в группу «sam» ...
+Создаётся домашний каталог «/home/sam» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе sam
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: Samuel
+	Номер комнаты []: 404          
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] y
+alex@alex-VirtualBox:~$ sudo usermod -aG sudo sam
+
+
+
