@@ -1,0 +1,42 @@
+1)
+alex@alex-VirtualBox:/etc/apt$ sudo nano sources.list
+alex@alex-VirtualBox:/etc/apt$ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add 
+OK
+
+lex@alex-VirtualBox:/etc/apt$ sudo apt install nginx -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Уже установлен пакет nginx самой новой версии (1.18.0-3ubuntu1+focal2).
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  chromium-codecs-ffmpeg-extra gstreamer1.0-vaapi
+  libgstreamer-plugins-bad1.0-0 libva-wayland2 linux-headers-5.8.0-44-generic
+  linux-hwe-5.8-headers-5.8.0-44 linux-image-5.8.0-44-generic
+  linux-modules-5.8.0-44-generic linux-modules-extra-5.8.0-44-generic
+Для их удаления используйте «sudo apt autoremove».
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+alex@alex-VirtualBox:/etc/apt$ sudo dpkg -i nginx
+dpkg: ошибка: cannot access archive 'nginx': Нет такого файла или каталога
+
+2)
+lex@alex-VirtualBox:/$ snap install vlc
+vlc 3.0.12.1 от VideoLAN✓ установлен
+
+3)
+alex@alex-VirtualBox:/$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+alex@alex-VirtualBox:/$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+alex@alex-VirtualBox:/$ sudo iptables -A INPUT -j DROP
+alex@alex-VirtualBox:/$ sudo iptables -L -v
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http
+    4   300 DROP       all  --  any    any     anywhere             anywhere            
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 4 packets, 300 bytes)
+ pkts bytes target     prot opt in     out     source               destination   
+
+4)alex@alex-VirtualBox:/$ sudo iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-ports 8080  
