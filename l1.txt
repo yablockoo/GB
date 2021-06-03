@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS `towns`;
+CREATE TABLE `towns` (
+	id SERIAL, 
+	name VARCHAR(100) UNIQUE
+);
+
+ALTER TABLE `profiles` ADD CONSTRAINT fk_hometown
+    FOREIGN KEY (hometown) REFERENCES towns(name);
+
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE `videos` (
+	id SERIAL,
+	name VARCHAR(255),
+	views BIGINT unsigned,
+	`media_id` BIGINT unsigned NOT NULL,
+	`autor_id` BIGINT UNSIGNED NOT NULL unique,
+	
+	INDEX video_name(name),
+	FOREIGN KEY (autor_id) REFERENCES users(id),
+    	FOREIGN KEY (media_id) REFERENCES media(id)
+);
+
+DROP TABLE IF EXISTS music_geners;
+CREATE TABLE music_geners(
+	id SERIAL,
+    	name VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS `music`;
+CREATE TABLE `music` (
+	id SERIAL,
+	name VARCHAR(255),
+	`media_id` BIGINT unsigned NOT NULL,
+	`genre_id` BIGINT unsigned NOT NULL,
+	autor VARCHAR(100),
+	duration TIME,
+	
+	INDEX music_name(name),
+	FOREIGN KEY (genre_id) REFERENCES music_geners(id),
+    	FOREIGN KEY (media_id) REFERENCES media(id)
+);
