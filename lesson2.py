@@ -108,7 +108,8 @@ def category_choose():
                 final_inp = input('Закончить работу? (y/n)')
                 if final_inp == 'y':
                     pd.DataFrame(final_df)
-                    
+                    with open('data2.json', 'w') as f:
+                        json.dump(final_df.json(), f)
                     print('Конец работы.')
                 else:
                     category_choose()
