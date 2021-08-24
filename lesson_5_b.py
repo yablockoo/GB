@@ -8,7 +8,7 @@ from pymongo import MongoClient
 from selenium.webdriver.common.keys import Keys
 import time
 
-sleep = 3
+sleep = 3600
 
 client = MongoClient('localhost', 27017)
 goods = client['goods']
